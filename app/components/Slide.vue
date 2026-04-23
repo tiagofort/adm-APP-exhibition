@@ -150,7 +150,10 @@
               </select>
             </div>
 
-            <div v-if="midia.length > 0" class="flex flex-wrap gap-3">
+            <div
+              v-if="midia.length > 0"
+              class="flex flex-wrap gap-3 px-4 sm:px-6"
+            >
               <button
                 v-for="(img, i) in midia"
                 :key="`${img.url}-${i}`"
@@ -211,6 +214,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from "vue";
 import BanerBlock from "../components/BannerBlock.vue";
+import insertPict from "../assets/utilities/insertPicture.png";
 
 const config = useRuntimeConfig();
 const { loggedIn } = useAuth();
@@ -270,7 +274,7 @@ function getToken() {
 
 function syncMainSlideByIndex(index) {
   if (!slides.value.length) {
-    imgPrincipal.value = "/utilities/insertPicture.png";
+    imgPrincipal.value = insertPict;
     id_ImgPrincipal.value = "";
     posicao.value = "";
     currentIndex.value = 0;
@@ -315,7 +319,7 @@ async function getSlides() {
         currentIndex.value >= slides.value.length ? 0 : currentIndex.value;
       syncMainSlideByIndex(newIndex);
     } else {
-      imgPrincipal.value = "/utilities/insertPicture.png";
+      imgPrincipal.value = insertPict;
       id_ImgPrincipal.value = "";
       posicao.value = "";
       currentIndex.value = 0;
